@@ -7,22 +7,23 @@ using Memes.Domain;
 
 namespace Memes.Infrastructure;
 
-// Options bound from configuration (appsettings.Production.json)
+// Options bound from configuration
 public sealed class RedditOptions
 {
     public string ClientId { get; set; } = "";
     public string ClientSecret { get; set; } = "";
-    public string Username { get; set; } = ""; // reddit account for script app
+    public string Username { get; set; } = "";
     public string Password { get; set; } = "";
     public string UserAgent { get; set; } = "MemeCrawler/1.0 (by u:yourusername)";
 }
 
-// OAuth token cache for the life of the process
-filesealed class RedditTokenCache
+// Simple in-memory token cache (fix: `sealed`, not `filesealed`)
+sealed class RedditTokenCache
 {
     public string? AccessToken { get; set; }
     public DateTimeOffset ExpiresAtUtc { get; set; } = DateTimeOffset.MinValue;
-    public bool IsValid() => !string.IsNullOrEmpty(AccessToken) && DateTimeOffset.UtcNow < ExpiresAtUtc.AddSeconds(-60);
+    public bool IsValid() =>
+        !string.IsNullOrEmpty(AccessToken) && DateTimeOffset.UtcNow < ExpiresAtUtc.AddSeconds(-60);
 }
 
 // Uses OAuth + UA and implements IMemePostProvider
@@ -37,16 +38,17 @@ public sealed class RedditClient : IMemePostProvider
     {
         _http = http;
         _opt = opt.Value;
-        // Required: real user-agent on every request
+
         _http.DefaultRequestHeaders.UserAgent.Clear();
         _http.DefaultRequestHeaders.UserAgent.ParseAdd(_opt.UserAgent);
     }
 
     public async Task<IReadOnlyList<MemePost>> GetTopFromLast24HoursAsync(int take = 20, CancellationToken ct = default)
     {
-        // Ensure we have a bearer token
         var token = await GetAccessTokenAsync(ct);
-        using var req = new HttpRequestMessage(HttpMethod.Get,
+
+        using var req = new HttpRequestMessage(
+            HttpMethod.Get,
             $"https://oauth.reddit.com/r/memes/top?t=day&limit={take}");
         req.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
         req.Headers.UserAgent.ParseAdd(_opt.UserAgent);
@@ -92,7 +94,7 @@ public sealed class RedditClient : IMemePostProvider
             .ToList();
     }
 
-    // --- OAuth password grant (script app) ---
+    // OAuth password grant (script app)
     private async Task<string> GetAccessTokenAsync(CancellationToken ct)
     {
         if (_cache.IsValid()) return _cache.AccessToken!;
@@ -122,7 +124,7 @@ public sealed class RedditClient : IMemePostProvider
         return token;
     }
 
-    // DTOs
+    // Reddit DTOs
     private sealed class RedditListingRoot { public RedditListingData? Data { get; set; } }
     private sealed class RedditListingData { public List<RedditChild> Children { get; set; } = []; }
     private sealed class RedditChild { public RedditPost? Data { get; set; } }
