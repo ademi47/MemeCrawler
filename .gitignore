@@ -1,0 +1,8 @@
+        # Ignore all files ending with .log
+        *.log
+
+        # Ignore a specific file
+        my_secret_config.txt
+
+        # Ignore an entire directory
+        MemesService/src/Memes.Api/appsettings.Development.json
