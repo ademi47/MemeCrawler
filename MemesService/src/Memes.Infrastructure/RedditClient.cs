@@ -1,26 +1,57 @@
-﻿using System.Net.Http.Json;
+﻿using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
+using Microsoft.Extensions.Options;
 using Memes.Domain;
 
 namespace Memes.Infrastructure;
 
-// Sample: JSON listing: https://www.reddit.com/r/memes/top.json?t=day&limit=20
-// Note: Reddit requires a real User-Agent; we also add basic retry at the handler level.
-public sealed class RedditClient(HttpClient http) : IMemePostProvider
+// Options bound from configuration (appsettings.Production.json)
+public sealed class RedditOptions
 {
-    private static readonly JsonSerializerOptions JsonOpts = new()
-    {
-        PropertyNameCaseInsensitive = true
-    };
+    public string ClientId { get; set; } = "";
+    public string ClientSecret { get; set; } = "";
+    public string Username { get; set; } = ""; // reddit account for script app
+    public string Password { get; set; } = "";
+    public string UserAgent { get; set; } = "MemeCrawler/1.0 (by u:yourusername)";
+}
 
-    public async Task<IReadOnlyList<MemePost>> GetTopFromLast24HoursAsync(
-        int take = 20, CancellationToken ct = default)
-    {
-        var url = $"https://www.reddit.com/r/memes/top.json?t=day&limit={take}";
-        using var req = new HttpRequestMessage(HttpMethod.Get, url);
-        req.Headers.UserAgent.ParseAdd("MemesService/1.0 (by u/examplebot)");
+// OAuth token cache for the life of the process
+filesealed class RedditTokenCache
+{
+    public string? AccessToken { get; set; }
+    public DateTimeOffset ExpiresAtUtc { get; set; } = DateTimeOffset.MinValue;
+    public bool IsValid() => !string.IsNullOrEmpty(AccessToken) && DateTimeOffset.UtcNow < ExpiresAtUtc.AddSeconds(-60);
+}
 
-        using var res = await http.SendAsync(req, ct);
+// Uses OAuth + UA and implements IMemePostProvider
+public sealed class RedditClient : IMemePostProvider
+{
+    private static readonly JsonSerializerOptions JsonOpts = new() { PropertyNameCaseInsensitive = true };
+    private readonly HttpClient _http;
+    private readonly RedditOptions _opt;
+    private readonly RedditTokenCache _cache = new();
+
+    public RedditClient(HttpClient http, IOptions<RedditOptions> opt)
+    {
+        _http = http;
+        _opt = opt.Value;
+        // Required: real user-agent on every request
+        _http.DefaultRequestHeaders.UserAgent.Clear();
+        _http.DefaultRequestHeaders.UserAgent.ParseAdd(_opt.UserAgent);
+    }
+
+    public async Task<IReadOnlyList<MemePost>> GetTopFromLast24HoursAsync(int take = 20, CancellationToken ct = default)
+    {
+        // Ensure we have a bearer token
+        var token = await GetAccessTokenAsync(ct);
+        using var req = new HttpRequestMessage(HttpMethod.Get,
+            $"https://oauth.reddit.com/r/memes/top?t=day&limit={take}");
+        req.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        req.Headers.UserAgent.ParseAdd(_opt.UserAgent);
+
+        using var res = await _http.SendAsync(req, ct);
         res.EnsureSuccessStatusCode();
 
         var root = await res.Content.ReadFromJsonAsync<RedditListingRoot>(JsonOpts, ct)
@@ -34,7 +65,6 @@ public sealed class RedditClient(HttpClient http) : IMemePostProvider
             var d = ch.Data;
             if (d is null) continue;
 
-            // construct absolute URLs
             var permalink = new Uri($"https://www.reddit.com{d.permalink}");
             var contentUrl = Uri.TryCreate(d.url_overridden_by_dest ?? d.url ?? "", UriKind.Absolute, out var cu)
                 ? cu : permalink;
@@ -53,7 +83,6 @@ public sealed class RedditClient(HttpClient http) : IMemePostProvider
             });
         }
 
-        // Filter up to last 24h
         var cutoff = DateTimeOffset.UtcNow.AddDays(-1);
         return mapped
             .Where(m => m.CreatedUtc >= cutoff)
@@ -63,7 +92,37 @@ public sealed class RedditClient(HttpClient http) : IMemePostProvider
             .ToList();
     }
 
-    // Reddit DTOs
+    // --- OAuth password grant (script app) ---
+    private async Task<string> GetAccessTokenAsync(CancellationToken ct)
+    {
+        if (_cache.IsValid()) return _cache.AccessToken!;
+
+        using var req = new HttpRequestMessage(HttpMethod.Post, "https://www.reddit.com/api/v1/access_token");
+        var basic = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_opt.ClientId}:{_opt.ClientSecret}"));
+        req.Headers.Authorization = new AuthenticationHeaderValue("Basic", basic);
+        req.Headers.UserAgent.ParseAdd(_opt.UserAgent);
+        req.Content = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["grant_type"] = "password",
+            ["username"] = _opt.Username,
+            ["password"] = _opt.Password
+        });
+
+        using var res = await _http.SendAsync(req, ct);
+        res.EnsureSuccessStatusCode();
+        var json = await res.Content.ReadFromJsonAsync<JsonElement>(cancellationToken: ct);
+
+        var token = json.GetProperty("access_token").GetString()!;
+        var expires = json.TryGetProperty("expires_in", out var e)
+            ? TimeSpan.FromSeconds(e.GetInt32())
+            : TimeSpan.FromMinutes(45);
+
+        _cache.AccessToken = token;
+        _cache.ExpiresAtUtc = DateTimeOffset.UtcNow.Add(expires);
+        return token;
+    }
+
+    // DTOs
     private sealed class RedditListingRoot { public RedditListingData? Data { get; set; } }
     private sealed class RedditListingData { public List<RedditChild> Children { get; set; } = []; }
     private sealed class RedditChild { public RedditPost? Data { get; set; } }
