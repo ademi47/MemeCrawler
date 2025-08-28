@@ -5,4 +5,4 @@
         my_secret_config.txt
 
         # Ignore an entire directory
-        MemesService/src/Memes.Api/appsettings.Development.json
+        /MemesService/src/Memes.Api/appsettings.Development.json
