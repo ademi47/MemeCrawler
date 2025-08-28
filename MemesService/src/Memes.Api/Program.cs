@@ -18,7 +18,6 @@ builder.Logging.SetMinimumLevel(LogLevel.Information);
 
 var token  = builder.Configuration["Telegram:BotToken"];
 var chatId = builder.Configuration["Telegram:ChatId"];
-var jitterBackoff = Backoff.DecorrelatedJitterBackoffV2(TimeSpan.FromSeconds(1), 5);
 
 if (string.IsNullOrWhiteSpace(token) || string.IsNullOrWhiteSpace(chatId))
 {
@@ -44,10 +43,7 @@ builder.Services.AddHttpClient<RedditClient>()
                 ValueTask.FromResult(
                     args.Outcome.Result is { } r && ((int)r.StatusCode == 429 ||
                     (int)r.StatusCode >= 500) || args.Outcome.Exception is not null)
-        })
-        .AddPolicyHandler(Policy<HttpResponseMessage>
-        .HandleResult(r => (int)r.StatusCode == 429 || (int)r.StatusCode >= 500)
-        .WaitAndRetryAsync(jitterBackoff));;
+        });
     });
     
 
