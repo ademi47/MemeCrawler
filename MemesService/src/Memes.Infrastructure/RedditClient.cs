@@ -103,19 +103,35 @@ public sealed class RedditClient : IMemePostProvider
         var basic = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_opt.ClientId}:{_opt.ClientSecret}"));
         req.Headers.Authorization = new AuthenticationHeaderValue("Basic", basic);
         req.Headers.UserAgent.ParseAdd(_opt.UserAgent);
-        req.Content = new FormUrlEncodedContent(new Dictionary<string, string>
+
+        var form = new Dictionary<string, string>
         {
             ["grant_type"] = "password",
             ["username"] = _opt.Username,
-            ["password"] = _opt.Password
-        });
+            ["password"] = _opt.Password,
+            ["scope"] = "read" // minimal scope to fetch subreddit listings
+        };
+
+        var otp = Environment.GetEnvironmentVariable("REDDIT_OTP");
+        if (!string.IsNullOrWhiteSpace(otp))
+            form["otp"] = otp; // only needed if the account has 2FA and you’re not using an app password
+
+        req.Content = new FormUrlEncodedContent(form);
 
         using var res = await _http.SendAsync(req, ct);
-        res.EnsureSuccessStatusCode();
-        var json = await res.Content.ReadFromJsonAsync<JsonElement>(cancellationToken: ct);
+        var body = await res.Content.ReadAsStringAsync(ct);
 
-        var token = json.GetProperty("access_token").GetString()!;
-        var expires = json.TryGetProperty("expires_in", out var e)
+        if (!res.IsSuccessStatusCode)
+            throw new HttpRequestException($"Reddit token request failed. Status={(int)res.StatusCode} {res.StatusCode}. Body={body}");
+
+        using var doc = JsonDocument.Parse(body);
+        var root = doc.RootElement;
+
+        if (!root.TryGetProperty("access_token", out var tokenEl))
+            throw new HttpRequestException($"Reddit token response missing access_token. Body={body}");
+
+        var token = tokenEl.GetString()!;
+        var expires = root.TryGetProperty("expires_in", out var e)
             ? TimeSpan.FromSeconds(e.GetInt32())
             : TimeSpan.FromMinutes(45);
 
