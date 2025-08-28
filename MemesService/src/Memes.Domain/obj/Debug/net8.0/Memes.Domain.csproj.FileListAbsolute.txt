@@ -1,0 +1,11 @@
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Domain\bin\Debug\net8.0\Memes.Domain.deps.json
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Domain\bin\Debug\net8.0\Memes.Domain.dll
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Domain\bin\Debug\net8.0\Memes.Domain.pdb
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Domain\obj\Debug\net8.0\Memes.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Domain\obj\Debug\net8.0\Memes.Domain.AssemblyInfoInputs.cache
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Domain\obj\Debug\net8.0\Memes.Domain.AssemblyInfo.cs
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Domain\obj\Debug\net8.0\Memes.Domain.csproj.CoreCompileInputs.cache
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Domain\obj\Debug\net8.0\Memes.Domain.dll
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Domain\obj\Debug\net8.0\refint\Memes.Domain.dll
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Domain\obj\Debug\net8.0\Memes.Domain.pdb
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Domain\obj\Debug\net8.0\ref\Memes.Domain.dll

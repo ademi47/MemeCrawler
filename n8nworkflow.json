@@ -1,0 +1,69 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "triggerTimes": [
+          {
+            "minute": "0",
+            "hour": "*"
+          }
+        ]
+      },
+      "id": "1",
+      "name": "Cron - every hour",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8080/reports/top-24h",
+        "responseFormat": "file"
+      },
+      "id": "2",
+      "name": "Call Local API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "-1002961719948",
+        "binaryProperty": "data",
+        "caption": "📊 Hourly Report"
+      },
+      "id": "3",
+      "name": "Send to Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [750, 300],
+      "credentials": {
+        "telegramApi": "Your Telegram Bot"
+      }
+    }
+  ],
+  "connections": {
+    "Cron - every hour": {
+      "main": [
+        [
+          {
+            "node": "Call Local API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Local API": {
+      "main": [
+        [
+          {
+            "node": "Send to Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

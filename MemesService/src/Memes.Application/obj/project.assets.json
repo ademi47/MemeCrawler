@@ -1,0 +1,94 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "Memes.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Memes.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Memes.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Memes.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Memes.Domain/Memes.Domain.csproj",
+      "msbuildProject": "../Memes.Domain/Memes.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "Memes.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Dragon\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Application\\Memes.Application.csproj",
+      "projectName": "Memes.Application",
+      "projectPath": "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Application\\Memes.Application.csproj",
+      "packagesPath": "C:\\Users\\Dragon\\.nuget\\packages\\",
+      "outputPath": "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Application\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Dragon\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Domain\\Memes.Domain.csproj": {
+              "projectPath": "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Domain\\Memes.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

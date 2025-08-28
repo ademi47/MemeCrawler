@@ -1,0 +1,128 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Application\\Memes.Application.csproj": {}
+  },
+  "projects": {
+    "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Application\\Memes.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Application\\Memes.Application.csproj",
+        "projectName": "Memes.Application",
+        "projectPath": "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Application\\Memes.Application.csproj",
+        "packagesPath": "C:\\Users\\Dragon\\.nuget\\packages\\",
+        "outputPath": "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Dragon\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Domain\\Memes.Domain.csproj": {
+                "projectPath": "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Domain\\Memes.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Domain\\Memes.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Domain\\Memes.Domain.csproj",
+        "projectName": "Memes.Domain",
+        "projectPath": "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Domain\\Memes.Domain.csproj",
+        "packagesPath": "C:\\Users\\Dragon\\.nuget\\packages\\",
+        "outputPath": "D:\\personnel\\HPMIL\\MemeCrawler\\MemesService\\src\\Memes.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Dragon\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

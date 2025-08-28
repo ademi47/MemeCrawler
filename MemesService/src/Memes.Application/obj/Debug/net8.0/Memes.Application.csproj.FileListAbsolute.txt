@@ -1,0 +1,15 @@
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\bin\Debug\net8.0\Memes.Application.deps.json
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\bin\Debug\net8.0\Memes.Application.dll
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\bin\Debug\net8.0\Memes.Application.pdb
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\bin\Debug\net8.0\Memes.Domain.dll
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\bin\Debug\net8.0\Memes.Domain.pdb
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\obj\Debug\net8.0\Memes.Application.csproj.AssemblyReference.cache
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\obj\Debug\net8.0\Memes.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\obj\Debug\net8.0\Memes.Application.AssemblyInfoInputs.cache
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\obj\Debug\net8.0\Memes.Application.AssemblyInfo.cs
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\obj\Debug\net8.0\Memes.Application.csproj.CoreCompileInputs.cache
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\obj\Debug\net8.0\Memes.Ap.E169ECC2.Up2Date
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\obj\Debug\net8.0\Memes.Application.dll
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\obj\Debug\net8.0\refint\Memes.Application.dll
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\obj\Debug\net8.0\Memes.Application.pdb
+D:\personnel\HPMIL\MemeCrawler\MemesService\src\Memes.Application\obj\Debug\net8.0\ref\Memes.Application.dll
