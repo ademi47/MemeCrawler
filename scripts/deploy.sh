@@ -16,11 +16,17 @@ POSTGRES_DB=${POSTGRES_DB}
 POSTGRES_USER=${POSTGRES_USER}
 POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
-# Reddit
-REDDIT_CLIENT_ID=${REDDIT_CLIENT_ID}
-REDDIT_CLIENT_SECRET=${REDDIT_CLIENT_SECRET}
-REDDIT_USERNAME=${REDDIT_USERNAME}
-REDDIT_PASSWORD=${REDDIT_PASSWORD}
+cat > ${TARGET_DIR}/src/Memes.Api/appsettings.Production.json <<EOF
+{
+  "Reddit": {
+    "ClientId": "${REDDIT_CLIENT_ID}",
+    "ClientSecret": "${REDDIT_CLIENT_SECRET}",
+    "Username": "${REDDIT_USERNAME}",
+    "Password": "${REDDIT_PASSWORD}",
+    "UserAgent": "MemeCrawler/1.0 (by u:${REDDIT_USERNAME})"
+  }
+}
+
 
 EOF
 
