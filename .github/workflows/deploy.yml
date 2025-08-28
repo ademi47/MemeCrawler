@@ -19,12 +19,12 @@ jobs:
         uses: easingthemes/ssh-deploy@v5.0.3
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-          ARGS: "-rlptDz --delete"
-          SOURCE: "./"
           REMOTE_HOST: ${{ secrets.SSH_HOST }}
           REMOTE_USER: ${{ secrets.SSH_USER }}
           REMOTE_PORT: ${{ secrets.SSH_PORT }}
+          SOURCE: "./"
           TARGET: "/srv/app"
+          ARGS: "-rlptDz --delete"
 
       - name: Remote deploy
         uses: appleboy/ssh-action@v1.2.0
