@@ -2,7 +2,6 @@ using Memes.Application;
 using Memes.Domain;
 using Memes.Infrastructure;
 using Polly;
-using Polly.Contrib.WaitAndRetry;
 using Polly.Extensions.Http;
 using Microsoft.Extensions.Http.Resilience;
 using Microsoft.EntityFrameworkCore;
@@ -48,7 +47,7 @@ builder.Services.AddHttpClient<RedditClient>()
         })
         .AddPolicyHandler(Policy<HttpResponseMessage>
         .HandleResult(r => (int)r.StatusCode == 429 || (int)r.StatusCode >= 500)
-        .WaitAndRetryAsync(jitterBackoff));
+        .WaitAndRetryAsync(jitterBackoff));;
     });
     
 
