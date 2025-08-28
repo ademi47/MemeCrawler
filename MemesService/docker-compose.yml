@@ -47,7 +47,7 @@ services:
   api:
     build:
       context: ./src/Memes.Api
-      dockerfile: Dockerfile
+      dockerfile: src/Memes.Api/Dockerfile
     environment:
       - ASPNETCORE_URLS=http://+:8080
       - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
