@@ -7,10 +7,13 @@ on:
       - "MemesService/**"
       - "scripts/deploy.sh"
       - ".github/workflows/deploy.yml"
+  workflow_dispatch: {}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: Production # <-- REQUIRED if your secrets are under the "Production" environment
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,13 +21,14 @@ jobs:
       - name: Sync repo to server
         uses: easingthemes/ssh-deploy@v5.0.3
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.SSH_HOST }}
-          REMOTE_USER: ${{ secrets.SSH_USER }}
-          REMOTE_PORT: ${{ secrets.SSH_PORT }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }} # <-- REQUIRED
+          REMOTE_HOST: ${{ secrets.SSH_HOST }} # <-- REQUIRED
+          REMOTE_USER: ${{ secrets.SSH_USER }} # <-- REQUIRED
+          REMOTE_PORT: ${{ secrets.SSH_PORT }} # optional (defaults to 22)
           SOURCE: "./"
           TARGET: "/srv/app"
           ARGS: "-rlptDz --delete"
+          SSH_CMD_ARGS: "-o StrictHostKeyChecking=no"
 
       - name: Remote deploy
         uses: appleboy/ssh-action@v1.2.0
@@ -35,11 +39,11 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           envs: TARGET_DIR,ACME_EMAIL,API_DOMAIN,ASPNETCORE_ENVIRONMENT,POSTGRES_DB,POSTGRES_USER,POSTGRES_PASSWORD
           script: |
-            export TARGET_DIR="${{ vars.TARGET_DIR }}"
+            export TARGET_DIR="/srv/app/MemesService"
             export ACME_EMAIL="${{ secrets.ACME_EMAIL }}"
             export API_DOMAIN="${{ secrets.API_DOMAIN }}"
-            export ASPNETCORE_ENVIRONMENT="${{ vars.ASPNETCORE_ENVIRONMENT }}"
+            export ASPNETCORE_ENVIRONMENT="Production"
             export POSTGRES_DB="${{ secrets.POSTGRES_DB }}"
             export POSTGRES_USER="${{ secrets.POSTGRES_USER }}"
             export POSTGRES_PASSWORD="${{ secrets.POSTGRES_PASSWORD }}"
-            bash ${TARGET_DIR%/}/../scripts/deploy.sh
+            bash /srv/app/scripts/deploy.sh
