@@ -1,0 +1,59 @@
+version: "3.9"
+name: appstack
+
+networks:
+  proxy:
+    name: proxy
+    driver: bridge
+
+volumes:
+  nginx_certs:
+  nginx_vhostd:
+  nginx_html:
+  acme:
+
+services:
+  # Reverse proxy + auto Let's Encrypt
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy:alpine
+    container_name: nginx-proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    networks: [proxy]
+    volumes:
+      - nginx_certs:/etc/nginx/certs:rw
+      - nginx_vhostd:/etc/nginx/vhost.d
+      - nginx_html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  acme-companion:
+    image: nginxproxy/acme-companion
+    depends_on: [nginx-proxy]
+    environment:
+      - DEFAULT_EMAIL=${ACME_EMAIL}
+      - NGINX_PROXY_CONTAINER=nginx-proxy
+    restart: unless-stopped
+    networks: [proxy]
+    volumes:
+      - nginx_certs:/etc/nginx/certs:rw
+      - nginx_vhostd:/etc/nginx/vhost.d
+      - nginx_html:/usr/share/nginx/html
+      - acme:/etc/acme.sh
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  # .NET API
+  api:
+    build:
+      context: ./src/Memes.Api
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - VIRTUAL_HOST=${API_DOMAIN}
+      - LETSENCRYPT_HOST=${API_DOMAIN}
+      - VIRTUAL_PORT=8080
+    restart: unless-stopped
+    depends_on: [nginx-proxy]
+    networks: [proxy]
