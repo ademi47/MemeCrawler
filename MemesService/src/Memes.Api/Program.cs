@@ -57,12 +57,18 @@ builder.Services.AddCors(o => o.AddPolicy(allowFrontend, p =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: allowFrontend, policy =>
-        policy.WithOrigins("https://memecrawler.duckdns.org", "https://*.amplifyapp.com")
-              .AllowAnyHeader()
-              .AllowAnyMethod());
+    options.AddPolicy("AmplifyFrontend", policy =>
+        policy
+            .WithOrigins(
+                "https://main.duj0n3y16kfpp.amplifyapp.com" // your Amplify domain
+                // ,"https://your-custom-frontend.example.com" // add more if needed
+            )
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            // ONLY include next line if you actually send cookies/auth headers from the browser:
+            //.AllowCredentials()
+    );
 });
-
 
 
 // Add DbContext
