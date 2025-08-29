@@ -65,7 +65,7 @@ services:
     environment:
       - ASPNETCORE_URLS=http://+:8080
       - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
-      # connection string for EF Core (adjust key if your app expects a different name)
+      # connection string for EF Core
       - ConnectionStrings__Default=Host=db;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD};Pooling=true;Maximum Pool Size=50;Timeout=15
       - VIRTUAL_HOST=${API_DOMAIN}
       - LETSENCRYPT_HOST=${API_DOMAIN}

@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
-          envs: TARGET_DIR,ACME_EMAIL,API_DOMAIN,ASPNETCORE_ENVIRONMENT,POSTGRES_DB,POSTGRES_USER,POSTGRES_PASSWORD,REDDIT_CLIENT_ID,REDDIT_CLIENT_SECRET,REDDIT_USERNAME,REDDIT_PASSWORD
+          envs: TARGET_DIR,ACME_EMAIL,API_DOMAIN,ASPNETCORE_ENVIRONMENT,POSTGRES_DB,POSTGRES_USER,POSTGRES_PASSWORD,REDDIT_CLIENT_ID,REDDIT_CLIENT_SECRET,REDDIT_USERNAME,REDDIT_PASSWORD,TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_ID
           script: |
             export TARGET_DIR="/srv/app/MemesService"
             export ACME_EMAIL="${{ secrets.ACME_EMAIL }}"
@@ -50,4 +50,6 @@ jobs:
             export REDDIT_CLIENT_SECRET="${{ secrets.REDDIT_CLIENT_SECRET }}"
             export REDDIT_USERNAME="${{ secrets.REDDIT_USERNAME }}"
             export REDDIT_PASSWORD="${{ secrets.REDDIT_PASSWORD }}"
+            export TELEGRAM_BOT_TOKEN="${{ secrets.TELEGRAM_BOT_TOKEN }}"
+            export TELEGRAM_CHAT_ID="${{ secrets.TELEGRAM_CHAT_ID }}"
             bash /srv/app/scripts/deploy.sh
