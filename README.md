@@ -1,3 +1,50 @@
+# MemeCrawler Project
+
+## 📖 Project Overview
+
+The **Meme Report System** is a full-stack application that automatically collects the **top memes from Reddit (/r/memes) in the last 24 hours**, stores and serves them via a **.NET 8 Web API**, displays them in a **React/Next.js frontend**, and delivers a **daily PDF report to Telegram** using **n8n automation**.
+
+This project was designed and developed as a **technical assignment** (showcasing backend, frontend, and workflow automation).
+
+Key highlights:
+
+---
+
+- **Backend**: ASP.NET 8 Web API with Reddit OAuth integration.
+- **Frontend**: React/Next.js UI to browse and trigger reports.
+- **Automation**: n8n cron workflow that generates & sends Telegram reports.
+- **Deployment**: Runs locally with Docker Compose or on AWS (EC2, ECS, Amplify).
+
+---
+
+## Project Objectives
+
+1. Create a webservice that crawls https://www.reddit.com/r/memes/ and returns top 20 voted posts for the past 24 hours. Sorted by top voted post first, descending order.
+
+2. Stores the crawled data into a database for historical tracking and future data visualization.
+
+3. Present and generate a report file for past 24 hrs top 20 trending memes that can be sent as a file via a Telegram Chatbot.
+
+4. Create a presentation deck to showcase live demo and explain both frontend and backend designs.
+
+5. Suggest 3 alternative use cases or actionable insights from the generated report.
+
+---
+
+## Tech Stack
+
+**Client:** React, Next, TailwindCSS
+
+**Server:** Node, Express
+
+**Automation:** n8n, Telegram
+
+**Code Versioning:** Github
+
+**Production Deployment:** AWS Amplify, AWS E2
+
+**Prompt Engineering:** Chat GPT 5
+
 ---
 
 ## 📡 API Guide — Top Voted Posts & Report Trigger
