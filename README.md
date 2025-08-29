@@ -1,14 +1,14 @@
-
 ---
+
 ## 📡 API Guide — Top Voted Posts & Report Trigger
 
 This service exposes a minimal, clear API for:
 
-* Retrieving Top (24h) Reddit posts (JSON).
+- Retrieving Top (24h) Reddit posts (JSON).
 
-* Triggering a report send to Telegram (and/or returning a quick status).
+- Triggering a report send to Telegram (and/or returning a quick status).
 
-* (Optional) Downloading a PDF version of the 24h report.
+- (Optional) Downloading a PDF version of the 24h report.
 
 **All endpoints return structured JSON unless otherwise stated**
 
@@ -23,23 +23,22 @@ This service exposes a minimal, clear API for:
 
 User-Agent: Backend uses a custom User-Agent when calling Reddit.
 
-***1) Get Top Voted Posts (24h)***
+**_1) Get Top Voted Posts (24h)_**
 
 Retrieve the top posts from /r/memes for the last 24 hours (sorted by upvotes, desc).
 
 Endpoint
+
 ```bash
 GET /memes/top-24h
 ```
 
 Query Parameters
-| Name   | Type    | Default | Description                                   |
+| Name | Type | Default | Description |
 | ------ | ------- | ------: | --------------------------------------------- |
-| `take` | integer |    `20` | Number of posts to return. |
+| `take` | integer | `20` | Number of posts to return. |
 
-
-
-*Example Requests*
+_Example Requests_
 
 ```bash
 # cURL (default 20)
@@ -53,7 +52,8 @@ http GET https://memecrawler.duckdns.org/memes/top-24h take==25
 
 ```
 
-*Success Response — 200 OK*
+_Success Response — 200 OK_
+
 ```bash
 [
   {
@@ -81,9 +81,7 @@ http GET https://memecrawler.duckdns.org/memes/top-24h take==25
 ]
 ```
 
-
-
-*Error Responses*
+_Error Responses_
 
 ```bash
 400 Bad Request — Invalid take (e.g., negative or non-numeric).
@@ -109,20 +107,20 @@ http GET https://memecrawler.duckdns.org/memes/top-24h take==25
 { "error": "Unexpected server error." }
 ```
 
-*Notes*
+_Notes_
 
-* Sorting is descending by upvotes.
+- Sorting is descending by upvotes.
 
-* Data is retrieved live from Reddit (or our cache layer, if added).
+- Data is retrieved live from Reddit (or our cache layer, if added).
 
-* server-side caching can be added (e.g., 60–120s) to reduce API churn.
+- server-side caching can be added (e.g., 60–120s) to reduce API churn.
 
-
-***2) Trigger Telegram Report and send to Telegram Bot***
+**_2) Trigger Telegram Report and send to Telegram Bot_**
 
 This process the current top-24h report and send it to the configured Telegram chat. This is used by the UI button and/or n8n.
 
 Endpoint
+
 ```bash
 POST /reports/send-telegram-now
 ```
@@ -135,7 +133,6 @@ No body required.
 
 Example Requests
 
-
 ```bash
 # cURL
 curl -X POST https://memecrawler.duckdns.org/reports/send-telegram-now
@@ -144,7 +141,8 @@ curl -X POST https://memecrawler.duckdns.org/reports/send-telegram-now
 http POST https://memecrawler.duckdns.org/reports/send-telegram-now
 ```
 
-*Success Response — 200 OK*
+_Success Response — 200 OK_
+
 ```bash
 {
   "status": "ok",
@@ -152,7 +150,7 @@ http POST https://memecrawler.duckdns.org/reports/send-telegram-now
 }
 ```
 
-*Error Responses*
+_Error Responses_
 
 ```bash
 {
@@ -162,7 +160,6 @@ http POST https://memecrawler.duckdns.org/reports/send-telegram-now
   "error": "Telegram disabled: BotToken/ChatId not configured."
 }
 ```
-
 
 ```bash
 502 Bad Gateway — Telegram API failure (non-2xx from Bot API).
@@ -176,7 +173,7 @@ http POST https://memecrawler.duckdns.org/reports/send-telegram-now
 { "error": "Unexpected server error." }
 ```
 
-*Notes*
+_Notes_
 
 This endpoint does not return the PDF; it triggers delivery to Telegram.
 
@@ -184,7 +181,7 @@ For automation, this can be called from n8n on a Cron schedule or a manual “Ex
 
 ## 🛠️ How the Background Service Stores Data in Database
 
-A lightweight background job *MemeCrawlWorker* runs on a schedule (e.g., every 20 minutes) and performs these steps:
+A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 20 minutes) and performs these steps:
 
 - Fetch Top Posts (24h window)
 
@@ -202,22 +199,22 @@ A lightweight background job *MemeCrawlWorker* runs on a schedule (e.g., every 2
 
 - Existing post → upsert only fields that can change (e.g., upvotes, thumbnail, removed flag).
 
-
-
 ## 🔍 Live Demo — What You’ll See When “Clicking API”
 
 **A) In the Browser (or Postman)**
 
 ```bash
-1. Open: https://memecrawler.duckdns.org/reports/top-24h, Alteratively you may go to -> https://memecrawler.duckdns.org/swagger/index.html. then trigger the API via swagger. 
+1. Open: https://memecrawler.duckdns.org/reports/top-24h, Alteratively you may go to -> https://memecrawler.duckdns.org/swagger/index.html. then trigger the API via swagger.
+
+![alt API](./Screenshots/APIs/1-API.jpg)
 
 2. You’ll see a JSON array of meme posts (title, url, upvotes, createdAt).
 
 3. In the UI, this populates the Reports page list (with images and vote counts).
 ```
 
-
 B) “Send Report” Button
+
 ```bash
 1. Click Send Report on the Reports page.
 
@@ -229,6 +226,3 @@ B) “Send Report” Button
 
 5. You see a success toast in the UI (and the new report in PDF format in Telegram).
 ```
-
-
-
