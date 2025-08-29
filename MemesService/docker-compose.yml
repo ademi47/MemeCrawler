@@ -75,8 +75,8 @@ services:
       - Reddit__Username=${REDDIT_USERNAME}
       - Reddit__Password=${REDDIT_PASSWORD}
       - Reddit__UserAgent=MemeCrawler/1.0 (by u:${REDDIT_USERNAME})
-      - Telegram__BotToken:${TELEGRAM_BOT_TOKEN}
-      - Telegram__ChatId:${TELEGRAM_CHAT_ID}
+      - Telegram__BotToken=${TELEGRAM_BOT_TOKEN}
+      - Telegram__ChatId=${TELEGRAM_CHAT_ID}
     depends_on:
       db:
         condition: service_healthy
