@@ -206,8 +206,6 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 ```bash
 1. Open: https://memecrawler.duckdns.org/reports/top-24h, Alteratively you may go to -> https://memecrawler.duckdns.org/swagger/index.html. then trigger the API via swagger.
 
-![plot](./Screenshots/APIs/1-API.jpg)
-
 2. You’ll see a JSON array of meme posts (title, url, upvotes, createdAt).
 
 3. In the UI, this populates the Reports page list (with images and vote counts).
@@ -226,3 +224,9 @@ B) “Send Report” Button
 
 5. You see a success toast in the UI (and the new report in PDF format in Telegram).
 ```
+
+_Screenshots_
+
+![plot](./Screenshots/APIs/1-API.jpg)
+
+![plot](./Screenshots/APIs/2-API.jpg)
