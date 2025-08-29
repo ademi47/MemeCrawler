@@ -55,6 +55,14 @@ var allowFrontend = "_allowFrontend";
 builder.Services.AddCors(o => o.AddPolicy(allowFrontend, p =>
     p.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod()));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: allowFrontend, policy =>
+        policy.WithOrigins("https://memecrawler.duckdns.org", "https://*.amplifyapp.com/")
+              .AllowAnyHeader()
+              .AllowAnyMethod());
+});
+
 
 
 // Add DbContext
