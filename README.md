@@ -181,3 +181,32 @@ http POST https://memecrawler.duckdns.org/reports/send-telegram-now
 This endpoint does not return the PDF; it triggers delivery to Telegram.
 
 For automation, this can be called from n8n on a Cron schedule or a manual “Execute Workflow”.
+
+
+
+## 🔍 Live Demo — What You’ll See When “Clicking API”
+
+**A) In the Browser (or Postman)**
+
+```bash
+1. Open: https://api.yourdomain.com/reports/top-24h
+
+2. You’ll see a JSON array of meme posts (title, url, upvotes, createdAt).
+
+3. In the UI, this populates the Reports page list (with images and vote counts).
+```
+
+
+B) “Send Report” Button
+```bash
+1. Click Send Report on the Reports page.
+
+2. The UI fires: POST /reports/send-telegram-now.
+
+3. The API fetches current top-24h posts and formats a summary (or builds PDF).
+
+4. Telegram Bot sends the message/document into your configured chat.
+
+5. You see a success toast in the UI (and the new report in PDF format in Telegram).
+```
+
