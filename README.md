@@ -182,6 +182,26 @@ This endpoint does not return the PDF; it triggers delivery to Telegram.
 
 For automation, this can be called from n8n on a Cron schedule or a manual “Execute Workflow”.
 
+## 🛠️ How the Background Service Stores Data in Database
+
+A lightweight background job *MemeCrawlWorker* runs on a schedule (e.g., every 20 minutes) and performs these steps:
+
+- Fetch Top Posts (24h window)
+
+- Calls Reddit API for /r/memes top posts (t=day, limit=20).
+
+- Normalizes each record (title, media URL, upvotes, created_utc, author, permalink, etc.).
+
+- De-duplication & Idempotency
+
+- Computes a stable external key per post (e.g., reddit_post_id from Reddit’s id).
+
+- Checks if that reddit_post_id already exists then insert snapshot accordingly.
+
+- New post → insert.
+
+- Existing post → upsert only fields that can change (e.g., upvotes, thumbnail, removed flag).
+
 
 
 ## 🔍 Live Demo — What You’ll See When “Clicking API”
@@ -209,5 +229,6 @@ B) “Send Report” Button
 
 5. You see a success toast in the UI (and the new report in PDF format in Telegram).
 ```
+
 
 
