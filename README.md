@@ -189,7 +189,7 @@ For automation, this can be called from n8n on a Cron schedule or a manual “Ex
 **A) In the Browser (or Postman)**
 
 ```bash
-1. Open: https://api.yourdomain.com/reports/top-24h
+1. Open: https://memecrawler.duckdns.org/reports/top-24h, Alteratively you may go to -> https://memecrawler.duckdns.org/swagger/index.html. then trigger the API via swagger. 
 
 2. You’ll see a JSON array of meme posts (title, url, upvotes, createdAt).
 
@@ -209,4 +209,5 @@ B) “Send Report” Button
 
 5. You see a success toast in the UI (and the new report in PDF format in Telegram).
 ```
+
 
