@@ -58,7 +58,7 @@ builder.Services.AddCors(o => o.AddPolicy(allowFrontend, p =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: allowFrontend, policy =>
-        policy.WithOrigins("https://memecrawler.duckdns.org", "https://*.amplifyapp.com/")
+        policy.WithOrigins("https://memecrawler.duckdns.org", "https://*.amplifyapp.com")
               .AllowAnyHeader()
               .AllowAnyMethod());
 });
