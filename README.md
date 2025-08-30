@@ -531,8 +531,16 @@ Sample:
 ```
 
 _Screenshots_
+
+---
+
+_APIs_
+![plot](/Screenshots/APIs/mainAPIs.jpg)
+
 _memes route:_
 ![plot](/Screenshots/Front%20End/memes_route.jpg)
 
 _reports route:_
 ![plot](/Screenshots/Front%20End/reports_route.jpg)
+
+---
