@@ -866,5 +866,6 @@ This project is actively evolving. The following areas are under continuous impr
 - Improve **database schema** for analytics and reports.
 - Expand automation with **n8n** (multi-channel delivery: Slack, Email).
 - Strengthen deployment scripts (CI/CD pipelines, infra-as-code).
+- Add more technical guide in the video and instructions to ReadMe with the screenshots.
 
 ---
