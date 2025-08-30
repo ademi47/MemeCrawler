@@ -262,23 +262,23 @@ This requires:
 
 e.g.:
 
-`````bash
+````bash
 MemeCrawler/1.0 (by u:MyRedditUserName)
 ```
 📥 Example JSON Response (trimmed)
 
-````bash
+```bash
 {
   "data": {
     "children": [
       {
         "data": {
           "id": "abc123",
-          "title": "When your build finally works",
-          "url": "https://i.redd.it/example.png",
-          "ups": 18321,
+          "title": "Did you know my Internet name is Ademi47",
+          "url": "https://i.redd.it/ademi.png",
+          "ups": 6743,
           "created_utc": 1725021123,
-          "permalink": "/r/memes/comments/abc123/when_your_build_finally_works/"
+          "permalink": "/r/memes/comments/abc123/Did_you_know_my_Internet_name_is_Ademi47/"
         }
       }
     ]
@@ -288,7 +288,7 @@ MemeCrawler/1.0 (by u:MyRedditUserName)
 
 🗄️ What I Store
 
-*From each Reddit post, I extract and persist:*
+From each Reddit post, I extract and persist:
 
 - id → stable Reddit post ID (used as unique key in DB)
 
@@ -303,7 +303,7 @@ MemeCrawler/1.0 (by u:MyRedditUserName)
 - permalink → Reddit link to the post
 
 
-*This data is written into:*
+This data is written into:
 
 - memes → canonical table (latest state of each post)
 
@@ -341,7 +341,7 @@ Please Click below link to watch the project Demo:
 https://www.youtube.com/watch?v=upHuJ_AFY1s
 
 Note: This video is unlisted hence it's not searchable. Kindly do not share the link.
-`````
+````
 
 **Note:**
 
