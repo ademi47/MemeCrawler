@@ -335,27 +335,27 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 
 ## 📡 Front End Guide
 
-# 🎨 UI Tech Stack & Features
+### 🎨 UI Tech Stack & Features
 
 The frontend is built with **Next.js** and **Tailwind CSS**, designed to provide a clean, responsive, and interactive user interface for exploring and managing meme reports.
 
 ---
 
-## 🛠️ Tech Stack
+### 🛠️ Tech Stack
 
-### **Framework: Next.js (React)**
+#### **Framework: Next.js (React)**
 
 - Provides **server-side rendering (SSR)** and **static site generation (SSG)** for fast loads.
 - Simplifies **API integration** via `fetch` in client/server components.
 - Supports environment variables (e.g. `NEXT_PUBLIC_API_BASE`) to easily switch between **local** and **production APIs**.
 
-### **Styling: Tailwind CSS**
+#### **Styling: Tailwind CSS**
 
 - Utility-first CSS framework for **fast styling**.
 - Consistent, responsive layouts without writing custom CSS.
 - Easy to apply hover/active states for buttons and interactive components.
 
-### **HTTP Requests: Axios / fetch**
+#### **HTTP Requests: Axios / fetch**
 
 - Used to call backend APIs (`/reports/top-24h` and `/reports/send-telegram-now`).
 - Error handling and loading states included for better UX.
@@ -367,9 +367,9 @@ The frontend is built with **Next.js** and **Tailwind CSS**, designed to provide
 
 ---
 
-## 🌟 Features
+### 🌟 Features
 
-### 1. **Reports Page**
+#### 1. **Memes Page**
 
 - Displays the **Top 20 Memes (24h)** retrieved from the backend API.
 - Each report card shows:
@@ -380,7 +380,7 @@ The frontend is built with **Next.js** and **Tailwind CSS**, designed to provide
 
 ---
 
-### 2. **Send Report Button**
+#### 2. **Send Report Button**
 
 - A **call-to-action button** triggers the backend API `/reports/send-telegram-now`.
 - When clicked, the system generates the **PDF report** and delivers it to Telegram.
@@ -388,7 +388,7 @@ The frontend is built with **Next.js** and **Tailwind CSS**, designed to provide
 
 ---
 
-### 3. **CORS & API Integration**
+#### 3. **CORS & API Integration**
 
 - Configured `NEXT_PUBLIC_API_BASE` in `.env` to point to backend API.
 - Added backend **CORS policy** (`AllowAnyOrigin`, `AllowAnyHeader`, `AllowAnyMethod`) to allow frontend requests.
@@ -396,7 +396,7 @@ The frontend is built with **Next.js** and **Tailwind CSS**, designed to provide
 
 ---
 
-### 4. **Error Handling & Debugging**
+#### 4. **Error Handling & Debugging**
 
 - UI gracefully handles:
   - **Empty data** (e.g., if API fails).
@@ -405,7 +405,7 @@ The frontend is built with **Next.js** and **Tailwind CSS**, designed to provide
 
 ---
 
-### 5. **Deployment-Ready**
+#### 5. **Deployment-Ready**
 
 - Supports **local dev** (`npm run dev`) with `.env.local`.
 - Easy deployment to **Vercel** or **AWS Amplify**.
@@ -413,7 +413,7 @@ The frontend is built with **Next.js** and **Tailwind CSS**, designed to provide
 
 ---
 
-## 🚀 Future Enhancements
+### 🚀 Future Enhancements
 
 - Add **search and filter** (e.g., search by keyword in meme titles).
 - Add **sorting controls** (sort by upvotes, createdAt).
