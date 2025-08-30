@@ -779,7 +779,11 @@ _UI reports route:_
 
 _n8n dashboard:_
 ![plot](/Screenshots/n8%20flow.jpg)
+
+_n8n cronJob Setup:_
 ![plot](/Screenshots/n8n_cron.jpg)
+
+_n8n HTTP Request:_
 ![plot](/Screenshots/n8n_request.jpg)
 
 _ER Diagram:_
