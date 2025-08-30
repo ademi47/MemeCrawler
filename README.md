@@ -333,7 +333,7 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 
 ---
 
-## 📡 Front End Guide
+## 💻 Front End Guide
 
 ### 🎨 UI Tech Stack & Features
 
