@@ -12,7 +12,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: Production # <-- REQUIRED if your secrets are under the "Production" environment
+    environment: Production #
 
     steps:
       - name: Checkout

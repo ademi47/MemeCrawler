@@ -60,8 +60,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AmplifyFrontend", policy =>
         policy
             .WithOrigins(
-                "https://main.duj0n3y16kfpp.amplifyapp.com" // your Amplify domain
-                // ,"https://your-custom-frontend.example.com" // add more if needed
+                "https://main.duj0n3y16kfpp.amplifyapp.com" // amplify domain
             )
             .AllowAnyMethod()
             .AllowAnyHeader()
@@ -86,7 +85,6 @@ builder.Services.AddScoped<GetTopMemesLast24h>();
 
 //Daily Report
 builder.Services.AddScoped<DailyReportGenerator>();
-// after your other services:
 builder.Services.AddScoped<Memes.Infrastructure.Reporting.IDailyReportJob,
                            Memes.Infrastructure.Reporting.DailyReportJob>();
 

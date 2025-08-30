@@ -14,7 +14,7 @@ public sealed class RedditOptions
     public string ClientSecret { get; set; } = "";
     public string Username { get; set; } = "";
     public string Password { get; set; } = "";
-    public string UserAgent { get; set; } = "MemeCrawler/1.0 (by u:yourusername)";
+    public string UserAgent { get; set; } = "MemeCrawler/1.0 (by u:Ademi47)";
 }
 
 // Simple in-memory token cache (fix: `sealed`, not `filesealed`)
