@@ -226,7 +226,90 @@ This endpoint does not return the PDF; it triggers delivery to Telegram.
 
 For automation, this can be called from n8n on a Cron schedule or a manual “Execute Workflow”.
 
-## 🛠️ How the Background Service Stores Data in Database
+🤖 How We Fetch Top 20 Memes (Past 24h)
+
+🔗 API Endpoint Used
+
+```bash
+https://www.reddit.com/r/memes/top/.json?t=day&limit=20
+```
+
+- /r/memes → the subreddit we’re tracking
+
+- /top → fetches posts sorted by upvotes
+
+- .json → requests a JSON response instead of HTML
+
+- t=day → restricts results to posts from the past 24 hours
+
+- limit=20 → fetch only the top 20 posts
+
+🛡️ Authentication & Headers
+
+For production usage, I integrated with Reddit’s OAuth2 API at:
+
+```bash
+https://oauth.reddit.com/r/memes/top?t=day&limit=20
+```
+
+This requires:
+
+- Client ID + Client Secret from a Reddit “Script App”
+
+- Username + Password (for server-side password grant)
+
+- A proper User-Agent string (Reddit requires this)
+
+e.g.:
+
+`````bash
+MemeCrawler/1.0 (by u:MyRedditUserName)
+```
+📥 Example JSON Response (trimmed)
+
+````bash
+{
+  "data": {
+    "children": [
+      {
+        "data": {
+          "id": "abc123",
+          "title": "When your build finally works",
+          "url": "https://i.redd.it/example.png",
+          "ups": 18321,
+          "created_utc": 1725021123,
+          "permalink": "/r/memes/comments/abc123/when_your_build_finally_works/"
+        }
+      }
+    ]
+  }
+}
+```
+
+🗄️ What I Store
+
+*From each Reddit post, I extract and persist:*
+
+- id → stable Reddit post ID (used as unique key in DB)
+
+- title → post title
+
+- url → direct media or link
+
+- ups → upvote count
+
+- created_utc → original Reddit timestamp
+
+- permalink → Reddit link to the post
+
+
+*This data is written into:*
+
+- memes → canonical table (latest state of each post)
+
+- memesnapshots → time-stamped snapshot (who was top at each 10-minute run)
+
+## 🛠️ MemeCrawler Service
 
 A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 20 minutes) and performs these steps:
 
@@ -246,6 +329,8 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 
 - Existing post → upsert only fields that can change (e.g., upvotes, thumbnail, removed flag).
 
+## 📔 GEN AI Prompts and Usage
+
 ## 🔍 Live Demo — What You’ll See When “Clicking API”
 
 ### Video Guide
@@ -256,7 +341,7 @@ Please Click below link to watch the project Demo:
 https://www.youtube.com/watch?v=upHuJ_AFY1s
 
 Note: This video is unlisted hence it's not searchable. Kindly do not share the link.
-```
+`````
 
 **Note:**
 
