@@ -468,6 +468,239 @@ Below are some of the key GEN-AI prompts that I used in this project.
 
 ---
 
+## 🔍 Production Deployment
+
+### 🚀 Frontend: Production Deployment with AWS Amplify (Next.js + Tailwind)
+
+This section describes how the **UI** is deployed to **AWS Amplify Hosting** using a connected GitHub repo. It supports both **SPA** and **Next.js (SSR/CSR)** builds.
+
+---
+
+### ✅ Prerequisites
+
+- GitHub repo with your frontend (Next.js)
+- Environment variable: `NEXT_PUBLIC_API_BASE=https://memecrawler.duckdns.org/.com`
+- Backend already reachable over HTTPS (for CORS)
+
+---
+
+#### 1) Connect Repository
+
+1. Open **AWS Amplify → Host a web app → GitHub**.
+2. Select the repo/branch (e.g., `main`).
+3. Framework auto-detected as **Next.js**.
+
+---
+
+#### 2) Build Settings
+
+Amplify usually generates this automatically:
+
+```yaml
+# amplify.yml
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - "**/*"
+  cache:
+    paths:
+      - node_modules/**/*
+```
+
+#### 3) Environment Variables
+
+**_In Amplify → App settings → Environment variables, I added:_**
+
+- `NEXT_PUBLIC_API_BASE = https://memecrawler.duckdns.org.com`
+
+- Note: Avoid server-side fetches at build time for external APIs (can cause fetch failed / ENOTFOUND). Use client-side fetch or runtime SSR with try/catch.
+
+#### 4. Custom Domain & HTTPS
+
+- 1. Amplify → Domain management → Add domain (e.g., ui.mydomain.com). --> This is optional. I left this blank as I don't have an extra domain registered.
+
+- 2. Select branch mapping → Amplify provisions ACM cert + Route 53 records automatically.
+
+- 3. Wait for propagation; test website.
+
+#### 5. CORS Considerations
+
+- Backend must allow our UI origin: `https://main.duj0n3y16kfpp.amplifyapp.com/`
+
+- CORS policy (server): allow GET, POST, necessary headers, credentials.
+
+#### 6. Troubleshooting (WIP)
+
+- CORS errors: Verify API’s allowed origins and HTTPS (mismatched protocols cause mixed content).
+
+- Next.js build fails (fetch): Move external fetch to client-side or a server route that runs at request-time.
+
+- 404 on deep links (SPA): Enable rewrites to index.html.
+
+---
+
+### 🖥️ Backend: Production Deployment on AWS EC2 (Docker Compose + NGINX + TLS)
+
+This section explains deploying the .NET 8 API on EC2 (Amazon Linux 2023) behind NGINX with Let’s Encrypt TLS. It pairs with the Amplify-hosted UI.
+
+✅ Prerequisites
+
+- Domain/DNS control (Route 53 or registrar)
+
+- Repo containing src/Memes.Api and /deploy/docker-compose.yml
+
+- Environment file for API (src/Memes.Api/.env):
+
+```bash
+ASPNETCORE_URLS=http://0.0.0.0:8080
+Telegram__BotToken=...
+Telegram__ChatId=...
+Reddit__UserAgent=MemeCrawler/1.0 (by u:Ademi47)
+Reddit__ClientId=...
+Reddit__ClientSecret=...
+Reddit__Username=...
+Reddit__Password=...
+```
+
+- Security Group allowing 80/443 (and temporary 8080/5678 if needed for testing)
+
+#### 1) Launch EC2
+
+AMI: Amazon Linux 2023
+
+Instance: t3.small or above
+
+Assign Elastic IP (optional)
+
+SSH into instance as ec2-user
+
+#### 2) Install Docker & Compose Plugin
+
+```bash
+sudo dnf update -y
+sudo dnf install -y docker docker-compose-plugin git
+sudo systemctl enable --now docker
+sudo usermod -aG docker ec2-user
+```
+
+#### 3) Clone & Run Stack
+
+```bash
+git clone https://github.com/ademi47/MemeCrawler.git
+cd <repo>/deploy
+docker compose up -d --build
+docker compose ps
+```
+
+Typical `docker-compose.yml` includes:
+
+- api (builds from src/Memes.Api)
+
+- postgres
+
+#### 4) NGINX Reverse Proxy
+
+```bash
+sudo dnf install -y nginx
+sudo systemctl enable --now nginx
+```
+
+Create `/etc/nginx/conf.d/api.conf`:
+
+```bash
+server {
+  listen 80;
+  server_name memecrawler.duckdns.org;
+
+  location / {
+    proxy_pass http://127.0.0.1:8080/;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+  }
+}
+```
+
+Test & reload:
+
+```bash
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+Point DNS: api.yourdomain.com → <EC2 public IP>
+
+#### 5) TLS (Used Let’s Encrypt via Certbot)
+
+```bash
+sudo dnf install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d api.yourdomain.com
+```
+
+auto-renew is installed by default; verify with:
+
+```bash
+systemctl status certbot-renew.timer
+```
+
+#### 6) Harden CORS for Production
+
+In API CORS policy, whitelist only our UI origin:
+
+Allow methods/headers actually used:
+
+GET, POST
+
+Content-Type, Authorization (if needed)
+
+#### 7) Optional: Systemd for Auto-Start
+
+```bash
+sudo tee /etc/systemd/system/memes.service <<'EOF'
+[Unit]
+Description=Meme Stack
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/ec2-user/<repo>/deploy
+ExecStart=/usr/bin/docker compose up -d
+ExecStop=/usr/bin/docker compose down
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo systemctl enable memes && sudo systemctl start memes
+```
+
+#### 8) Logs & Monitoring
+
+```bash
+docker compose logs -f api
+journalctl -u nginx -f
+```
+
+#### Summary
+
+- Frontend: AWS Amplify → fast CI/CD, custom domain, HTTPS, env vars.
+
+- Backend: EC2 + Docker Compose → NGINX reverse proxy → TLS via Certbot.
+
+- Integration: CORS locked to UI domain, NEXT_PUBLIC_API_BASE points to HTTPS API.
+
+---
+
 ## 🔍 Live Demo
 
 ### Video Guide
