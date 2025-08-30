@@ -70,7 +70,7 @@ This service exposes a minimal, clear API for:
 
 User-Agent: Backend uses a custom User-Agent when calling Reddit.
 
-**_1) Get Top Voted Posts (24h)_**
+### 1) Get Top Voted Posts (24h)
 
 Retrieve the top posts from /r/memes for the last 24 hours (sorted by upvotes, desc).
 
@@ -162,7 +162,7 @@ _Notes_
 
 - server-side caching can be added (e.g., 60–120s) to reduce API churn.
 
-**_2) Trigger Telegram Report and send to Telegram Bot_**
+### 2) Trigger Telegram Report and send to Telegram Bot
 
 This process the current top-24h report and send it to the configured Telegram chat. This is used by the UI button and/or n8n.
 
@@ -248,17 +248,21 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 
 ## 🔍 Live Demo — What You’ll See When “Clicking API”
 
-**A) In the Browser (or Postman)**
+### Video Guide
+
+Please Click this "Unlisted" Youtube Video to watch the project Demo : https://www.youtube.com/watch?v=upHuJ_AFY1s
+
+### A) In the Browser (or Postman)
 
 ```bash
 1. Open: https://memecrawler.duckdns.org/reports/top-24h, Alteratively you may go to -> https://memecrawler.duckdns.org/swagger/index.html. then trigger the API via swagger.
 
-2. You’ll see a JSON array of meme posts (title, url, upvotes, createdAt).
+2. You’ll see a JSON array of meme posts (title, url, upvotes, createdAt etc).
 
 3. In the UI, this populates the Reports page list (with images and vote counts).
 ```
 
-B) “Send Report” Button
+### B) “Send Report” Button
 
 ```bash
 1. Click Send Report on the Reports page.
