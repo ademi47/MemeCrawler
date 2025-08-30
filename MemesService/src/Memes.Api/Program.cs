@@ -64,8 +64,6 @@ builder.Services.AddCors(options =>
             )
             .AllowAnyMethod()
             .AllowAnyHeader()
-            // ONLY include next line if you actually send cookies/auth headers from the browser:
-            //.AllowCredentials()
     );
 });
 
@@ -160,7 +158,7 @@ app.MapGet("/memes/top-24h", async (int? take, GetTopMemesLast24h uc, Cancellati
 .Produces(StatusCodes.Status200OK)
 .WithOpenApi();
 
-// NEW: DB-backed report
+// DB-backed report
 app.MapGet("/reports/top-24h", async (int? take, IMemeRepository repo, CancellationToken ct) =>
 {
     var list = await repo.GetTopFromDbLast24hAsync(take is >=1 and <=100 ? take.Value : 20, ct);
