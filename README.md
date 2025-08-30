@@ -1,5 +1,17 @@
 # MemeCrawler Project
 
+## 📑 Table of Contents
+
+- [📖 Project Overview](#-project-overview)
+- [🔑 Reddit API Setup](#-API-Guide-—Top-Voted-Posts-&-Report-Trigger)
+- [📡 API Guide](#-api-guide--top-voted-posts--report-trigger)
+- [🗄️ Database Structure](#️-database-structure)
+- [🎨 UI Tech Stack & Features](#-ui-tech-stack--features)
+- [🚀 Frontend: AWS Amplify Deployment](#-frontend-production-deployment-with-aws-amplify-nextjs--tailwind)
+- [🖥️ Backend: AWS EC2 Deployment](#️-backend-production-deployment-on-aws-ec2-docker-compose--nginx--tls)
+- [🔄 Continuous Improvements](#-continuous-improvements--maintenance)
+- [💡 Alternative Use Cases](#-alternative-use-cases-for-memecrawler)
+
 ## 📖 Project Overview
 
 The **Meme Report System** is a full-stack application that automatically collects the **top memes from Reddit (/r/memes) in the last 24 hours**, stores and serves them via a **.NET 8 Web API**, displays them in a **React/Next.js frontend**, and delivers a **daily PDF report to Telegram** using **n8n automation**.
@@ -17,7 +29,7 @@ Key highlights:
 
 ---
 
-## Project Objectives
+### Project Objectives
 
 1. Create a webservice that crawls https://www.reddit.com/r/memes/ and returns top 20 voted posts for the past 24 hours. Sorted by top voted post first, descending order.
 
@@ -31,7 +43,7 @@ Key highlights:
 
 ---
 
-## Tech Stack
+### Tech Stack
 
 **Client:** React, Next, TailwindCSS
 
@@ -43,7 +55,7 @@ Key highlights:
 
 **Production Deployment:** AWS Amplify, AWS E2
 
-**Prompt Engineering:** Chat GPT 5
+**Prompt Engineering:** Chat GPT 5, Google Gemini
 
 ---
 
