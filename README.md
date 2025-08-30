@@ -715,6 +715,15 @@ journalctl -u nginx -f
 
 ## 🔍 Live Demo
 
+```bash
+BackEnd Swagger JSON URL(Prod):
+https://memecrawler.duckdns.org/swagger/index.html
+
+Frontend URL (Prod):
+https://main.duj0n3y16kfpp.amplifyapp.com/memes (User Dashboard)
+https://main.duj0n3y16kfpp.amplifyapp.com/reports (Admin Dashboard)
+```
+
 ### Video Guide
 
 Please Click below link to watch the project Demo.
@@ -728,8 +737,6 @@ https://www.youtube.com/watch?v=upHuJ_AFY1s
 ```bash
 This video is unlisted hence it's not searchable. Kindly do not share the link.
 The project has been successfully deployed to the production environment for functionality testing.
-However, I encountered some CORS issues on the frontend, which are preventing it from running fully at the moment.
-I’m actively working on resolving these and will have the frontend up and running as soon as possible.
 ```
 
 ### Production Test using API calls via Browser (or Postman)
