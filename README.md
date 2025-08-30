@@ -536,11 +536,12 @@ _Screenshots_
 
 _APIs_
 ![plot](/Screenshots/APIs/mainAPIs.jpg)
+![plot](/Screenshots/APIs/TG_send.jpg)
 
-_memes route:_
+_UI memes route:_
 ![plot](/Screenshots/Front%20End/memes_route.jpg)
 
-_reports route:_
+_UI reports route:_
 ![plot](/Screenshots/Front%20End/reports_route.jpg)
 
 ---
