@@ -762,6 +762,7 @@ Sample:
 }
 
 3. In the UI, when /memes route refreshes, this calls the above API and shows the Memes posts list (with images, vote counts and post links).
+URL: https://main.duj0n3y16kfpp.amplifyapp.com/memes
 
 4. There are two views in the UI. /memes and /reports
 ```
@@ -771,7 +772,8 @@ Sample:
 ```bash
 1. Open: https://memecrawler.duckdns.org/reports/top-24h, Alteratively you may go to -> https://memecrawler.duckdns.org/swagger/index.html. then trigger the API via swagger.
 
-2. Click Send Report on the Reports page.
+2. Click Send Report on the Reports page in the UI.
+URL: https://main.duj0n3y16kfpp.amplifyapp.com/reports
 
 3. The UI fires: POST /reports/send-telegram-now.
 
