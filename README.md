@@ -309,7 +309,7 @@ MemeCrawler/1.0 (by u:Ademi47)
 
 - memesnapshots → time-stamped snapshot (who was top at each 10-minute run)
 
-## 🛠️ MemeCrawler Service
+## 🛠️ MemeCrawler Service (Back end)
 
 A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 20 minutes) and performs these steps:
 
@@ -330,6 +330,38 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 - Existing post → upsert only fields that can change (e.g., upvotes, thumbnail, removed flag).
 
 ## 📔 GEN AI Prompts and Usage
+
+Below are some of the key GEN-AI prompts that I used in this project.
+
+**Frontend with Next.js + Tailwind + Troubleshooting**
+
+```bash
+“I’m building a frontend with Next.js and Tailwind CSS. Show me how to structure a Reports page that fetches from my API and displays data in cards. Include a Send Report button that calls a POST endpoint. Make it responsive.”
+
+“I’m getting a CORS error in my Next.js frontend when calling my backend API. Explain why this happens and how to fix it (server-side CORS policy vs client-side fetch).”
+
+“My Tailwind buttons look greyed out. Show me how to style them with hover, active, and focus states so they look clickable.”
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
 
 ## 🔍 Live Demo — What You’ll See When “Clicking API”
 
