@@ -252,7 +252,12 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 
 Please Click this "Unlisted" Youtube Video to watch the project Demo : https://www.youtube.com/watch?v=upHuJ_AFY1s
 
-### A) In the Browser (or Postman)
+\*Note:
+The project has been successfully deployed to the production environment for functionality testing.
+However, I encountered some CORS issues on the frontend, which are preventing it from running fully at the moment.
+I’m actively working on resolving these and will have the frontend up and running as soon as possible.
+
+### Production Test using API calls via Browser (or Postman)
 
 ```bash
 1. Open: https://memecrawler.duckdns.org/reports/top-24h, Alteratively you may go to -> https://memecrawler.duckdns.org/swagger/index.html. then trigger the API via swagger.
@@ -260,9 +265,17 @@ Please Click this "Unlisted" Youtube Video to watch the project Demo : https://w
 2. You’ll see a JSON array of meme posts (title, url, upvotes, createdAt etc).
 
 3. In the UI, this populates the Reports page list (with images and vote counts).
+
+4. There are two views in the UI. /memes and /reports
 ```
 
-### B) “Send Report” Button
+#memes route:
+![plot](/Screenshots/Front%20End/memes_route.jpg)
+
+#reports route:
+![plot](/Screenshots/Front%20End/reports_route.jpg)
+
+###
 
 ```bash
 1. Click Send Report on the Reports page.
