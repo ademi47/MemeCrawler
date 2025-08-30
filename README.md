@@ -478,7 +478,7 @@ This section describes how the **UI** is deployed to **AWS Amplify Hosting** usi
 
 ### ✅ Prerequisites
 
-- GitHub repo with your frontend (Next.js)
+- GitHub repo with our frontend (Next.js)
 - Environment variable: `NEXT_PUBLIC_API_BASE=https://memecrawler.duckdns.org/.com`
 - Backend already reachable over HTTPS (for CORS)
 
@@ -637,13 +637,13 @@ Test & reload:
 sudo nginx -t && sudo systemctl reload nginx
 ```
 
-Point DNS: api.yourdomain.com → <EC2 public IP>
+Point DNS: https://memecrawler.duckdns.org → <EC2 My public IP>
 
 #### 5) TLS (Used Let’s Encrypt via Certbot)
 
 ```bash
 sudo dnf install -y certbot python3-certbot-nginx
-sudo certbot --nginx -d api.yourdomain.com
+sudo certbot --nginx -d https://memecrawler.duckdns.org
 ```
 
 auto-renew is installed by default; verify with:
@@ -758,7 +758,7 @@ Sample:
 
 4. The API fetches current top-24h posts and formats a summary (or builds PDF).
 
-5. Telegram Bot sends the message/document into your configured chat.
+5. Telegram Bot sends the message/document into our configured chat.
 
 6. You see a success toast in the UI (and the new report in PDF format in Telegram).
 ```
