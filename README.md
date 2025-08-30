@@ -262,9 +262,10 @@ This requires:
 
 e.g.:
 
-````bash
+```bash
 MemeCrawler/1.0 (by u:MyRedditUserName)
 ```
+
 📥 Example JSON Response (trimmed)
 
 ```bash
@@ -288,7 +289,7 @@ MemeCrawler/1.0 (by u:MyRedditUserName)
 
 🗄️ What I Store
 
-From each Reddit post, I extract and persist:
+**From each Reddit post, I extract and persist:**
 
 - id → stable Reddit post ID (used as unique key in DB)
 
@@ -302,8 +303,7 @@ From each Reddit post, I extract and persist:
 
 - permalink → Reddit link to the post
 
-
-This data is written into:
+**This data is written into:**
 
 - memes → canonical table (latest state of each post)
 
@@ -341,7 +341,7 @@ Please Click below link to watch the project Demo:
 https://www.youtube.com/watch?v=upHuJ_AFY1s
 
 Note: This video is unlisted hence it's not searchable. Kindly do not share the link.
-````
+```
 
 **Note:**
 
