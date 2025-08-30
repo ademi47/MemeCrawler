@@ -11,6 +11,7 @@
 - [🔍 Live Demo](#-Live-Demo)
 - [💡 Alternative Use Cases](#-alternative-use-cases-for-memecrawler)
 - [🔄 Continuous Improvements](#-continuous-improvements--maintenance)
+- [🌐 References](#-references)
 
 ## 📖 Project Overview
 
@@ -897,5 +898,60 @@ This project is actively evolving. The following areas are under continuous impr
 - Expand automation with **n8n** (multi-channel delivery: Slack, Email).
 - Strengthen deployment scripts (CI/CD pipelines, infra-as-code).
 - Add more technical guide in the video and instructions to ReadMe with the screenshots.
+
+---
+
+## 🌐 References
+
+Below are some key resources used while building and deploying this project:
+
+---
+
+### 🖥️ Frontend (Next.js + Tailwind CSS)
+
+- [Next.js Documentation](https://nextjs.org/docs) – Framework for React-based apps, SSR/SSG.
+- [Tailwind CSS Docs](https://tailwindcss.com/docs) – Utility-first CSS for rapid UI development.
+- [Vercel – Next.js Deployment Guides](https://vercel.com/docs/frameworks/nextjs) – Good reference for client-side vs server-side data fetching.
+
+---
+
+### ⚙️ Backend (ASP.NET Core, LINQ, EF Core)
+
+- [ASP.NET Core Documentation](https://learn.microsoft.com/en-us/aspnet/core) – Official docs for Web APIs and middleware.
+- [Entity Framework Core Documentation](https://learn.microsoft.com/en-us/ef/core/) – Working with LINQ queries and optimizing database access.
+- [LINQ Query Examples](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/) – Useful patterns for filtering, sorting, and projection.
+
+---
+
+### 🤖 Reddit API
+
+- [Reddit API Documentation](https://www.reddit.com/dev/api) – Endpoints, OAuth2 flows, and rules.
+- [Reddit App Preferences](https://www.reddit.com/prefs/apps) – Where to create a Script App for Client ID & Secret.
+- [Reddit OAuth2 Quick Start](https://github.com/reddit-archive/reddit/wiki/OAuth2) – Password grant and token generation reference.
+
+---
+
+### 🔄 Automation (n8n + Workflows)
+
+- [n8n Documentation](https://docs.n8n.io/) – Core concepts, workflow examples, and integrations.
+- [n8n Community Nodes](https://n8n.io/integrations) – Extend automation with ready-made nodes.
+- [Telegram Bot API](https://core.telegram.org/bots/api) – Sending messages and documents programmatically.
+
+---
+
+### ☁️ AWS Deployment
+
+- [AWS Amplify Hosting](https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html) – Hosting Next.js frontends.
+- [AWS EC2 Documentation](https://docs.aws.amazon.com/ec2/index.html) – Managing instances for backend services.
+- [AWS CloudFront with S3](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html) – Serving secured media via signed URLs.
+- [NGINX Reverse Proxy Guide](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) – Useful for routing API requests on EC2.
+
+---
+
+### 🧪 Miscellaneous
+
+- [MDN Web Docs – CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) – Understanding and fixing cross-origin issues.
+- [QuestPDF Documentation](https://www.questpdf.com/documentation.html) – For optional server-side PDF generation in .NET.
+- [GitHub Actions Docs](https://docs.github.com/en/actions) – CI/CD pipelines for build and deployment.
 
 ---
