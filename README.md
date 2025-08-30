@@ -250,7 +250,8 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 
 ### Video Guide
 
-Please Click this "Unlisted" Youtube Video to watch the project Demo : https://www.youtube.com/watch?v=upHuJ_AFY1s
+Please Click this "Unlisted" Youtube Video to watch the project Demo :
+https://www.youtube.com/watch?v=upHuJ_AFY1s
 
 \*Note:
 The project has been successfully deployed to the production environment for functionality testing.
@@ -259,38 +260,50 @@ I’m actively working on resolving these and will have the frontend up and runn
 
 ### Production Test using API calls via Browser (or Postman)
 
+**Memes Route**
+
 ```bash
-1. Open: https://memecrawler.duckdns.org/reports/top-24h, Alteratively you may go to -> https://memecrawler.duckdns.org/swagger/index.html. then trigger the API via swagger.
+1. Open: https://memecrawler.duckdns.org/memes/top-24h, Alteratively you may go to -> https://memecrawler.duckdns.org/swagger/index.html. then trigger the API via swagger.
 
-2. You’ll see a JSON array of meme posts (title, url, upvotes, createdAt etc).
+Note: You’ll see a JSON array of meme posts.
 
-3. In the UI, this populates the Reports page list (with images and vote counts).
+Sample:
+
+{
+"id":"1n3fwwb",
+"title":"Monster.com",
+"author":"Own_Touch9354",
+"permalink":"https://www.reddit.com/r/memes/comments/1n3fwwb/monstercom/",
+"contentUrl":"https://i.redd.it/wuaox6tb90mf1.jpeg",
+"upvotes":19788,"numComments":72,
+"createdUtc":"2025-08-29T18:53:35+00:00",
+"thumbnail":"https://b.thumbs.redditmedia.com/13uoRnFJFR9ASqdkVBIX67PpI4ycBv8-t_HB3tcpyEg.jpg"
+}
+
+3. In the UI, when /memes route refreshes, this calls the above API and shows the Memes posts list (with images, vote counts and post links).
 
 4. There are two views in the UI. /memes and /reports
 ```
 
+**Reports Route**
+
+```bash
+1. Open: https://memecrawler.duckdns.org/reports/top-24h, Alteratively you may go to -> https://memecrawler.duckdns.org/swagger/index.html. then trigger the API via swagger.
+
+2. Click Send Report on the Reports page.
+
+3. The UI fires: POST /reports/send-telegram-now.
+
+4. The API fetches current top-24h posts and formats a summary (or builds PDF).
+
+5. Telegram Bot sends the message/document into your configured chat.
+
+6. You see a success toast in the UI (and the new report in PDF format in Telegram).
+```
+
+_Screenshots_
 _memes route:_
 ![plot](/Screenshots/Front%20End/memes_route.jpg)
 
 _reports route:_
 ![plot](/Screenshots/Front%20End/reports_route.jpg)
-
-###
-
-```bash
-1. Click Send Report on the Reports page.
-
-2. The UI fires: POST /reports/send-telegram-now.
-
-3. The API fetches current top-24h posts and formats a summary (or builds PDF).
-
-4. Telegram Bot sends the message/document into your configured chat.
-
-5. You see a success toast in the UI (and the new report in PDF format in Telegram).
-```
-
-_Screenshots_
-
-![plot](./Screenshots/APIs/1-API.jpg)
-
-![plot](./Screenshots/APIs/2-API.jpg)
