@@ -779,6 +779,8 @@ _UI reports route:_
 
 _n8n dashboard:_
 ![plot](/Screenshots/n8%20flow.jpg)
+![plot](/Screenshots/n8n_cron.jpg)
+![plot](/Screenshots/n8n_request.jpg)
 
 _ER Diagram:_
 ![plot](/Screenshots/DB/ER%20Diagram.jpg)
