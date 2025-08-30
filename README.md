@@ -333,6 +333,103 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 
 ---
 
+## 📡 Front End Guide
+
+# 🎨 UI Tech Stack & Features
+
+The frontend is built with **Next.js** and **Tailwind CSS**, designed to provide a clean, responsive, and interactive user interface for exploring and managing meme reports.
+
+---
+
+## 🛠️ Tech Stack
+
+### **Framework: Next.js (React)**
+
+- Provides **server-side rendering (SSR)** and **static site generation (SSG)** for fast loads.
+- Simplifies **API integration** via `fetch` in client/server components.
+- Supports environment variables (e.g. `NEXT_PUBLIC_API_BASE`) to easily switch between **local** and **production APIs**.
+
+### **Styling: Tailwind CSS**
+
+- Utility-first CSS framework for **fast styling**.
+- Consistent, responsive layouts without writing custom CSS.
+- Easy to apply hover/active states for buttons and interactive components.
+
+### **HTTP Requests: Axios / fetch**
+
+- Used to call backend APIs (`/reports/top-24h` and `/reports/send-telegram-now`).
+- Error handling and loading states included for better UX.
+
+### **UI Components**
+
+- Built with **React functional components**.
+- Structured into reusable components: _ReportCard_, _ReportsPage_, _SendReportButton_.
+
+---
+
+## 🌟 Features
+
+### 1. **Reports Page**
+
+- Displays the **Top 20 Memes (24h)** retrieved from the backend API.
+- Each report card shows:
+  - Meme **title**
+  - Meme **upvotes** count
+  - **Image preview** (from Reddit post URL)
+- Responsive grid layout for desktop and mobile.
+
+---
+
+### 2. **Send Report Button**
+
+- A **call-to-action button** triggers the backend API `/reports/send-telegram-now`.
+- When clicked, the system generates the **PDF report** and delivers it to Telegram.
+- Button styled with Tailwind for **active/hover states** (blue → lighter on hover).
+
+---
+
+### 3. **CORS & API Integration**
+
+- Configured `NEXT_PUBLIC_API_BASE` in `.env` to point to backend API.
+- Added backend **CORS policy** (`AllowAnyOrigin`, `AllowAnyHeader`, `AllowAnyMethod`) to allow frontend requests.
+- Ensures smooth communication between frontend and backend in dev and prod.
+
+---
+
+### 4. **Error Handling & Debugging**
+
+- UI gracefully handles:
+  - **Empty data** (e.g., if API fails).
+  - **CORS errors** → logs helpful messages in the console.
+  - **API errors** → displays fallback states.
+
+---
+
+### 5. **Deployment-Ready**
+
+- Supports **local dev** (`npm run dev`) with `.env.local`.
+- Easy deployment to **Vercel** or **AWS Amplify**.
+- Uses environment variables for production-ready configuration.
+
+---
+
+## 🚀 Future Enhancements
+
+- Add **search and filter** (e.g., search by keyword in meme titles).
+- Add **sorting controls** (sort by upvotes, createdAt).
+- Paginate historical reports pulled from `memesnapshots` table.
+- Dark/light mode toggle with Tailwind’s theme support.
+
+---
+
+👉 In short, the **UI** provides a simple but powerful way to:
+
+- Browse **top memes from Reddit**.
+- Trigger automated **report generation**.
+- Seamlessly integrate with the backend and n8n workflows.
+
+---
+
 ## 📔 GEN AI Prompts and Usage
 
 Below are some of the key GEN-AI prompts that I used in this project.
