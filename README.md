@@ -943,7 +943,7 @@ Below are some key resources used while building and deploying this project:
 
 - [AWS Amplify Hosting](https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html) – Hosting Next.js frontends.
 - [AWS EC2 Documentation](https://docs.aws.amazon.com/ec2/index.html) – Managing instances for backend services.
-- [AWS CloudFront with S3](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html) – Serving secured media via signed URLs.
+- [AWS CloudFront with S3](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html) – Serving secured media via signed URLs. (I'm plannig to upgrade the project with cloudfront in future)
 - [NGINX Reverse Proxy Guide](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) – Useful for routing API requests on EC2.
 
 ---
@@ -951,7 +951,9 @@ Below are some key resources used while building and deploying this project:
 ### 🧪 Miscellaneous
 
 - [MDN Web Docs – CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) – Understanding and fixing cross-origin issues.
+- [Cors Issues](https://www.reddit.com/r/reactjs/comments/15s76rw/how_to_avoid_getting_cors_error_in_production)
 - [QuestPDF Documentation](https://www.questpdf.com/documentation.html) – For optional server-side PDF generation in .NET.
 - [GitHub Actions Docs](https://docs.github.com/en/actions) – CI/CD pipelines for build and deployment.
+- [Reddit App - From Access Tokens to Automated Data Collection ](https://latenode.com/blog/how-to-use-reddit-api-from-access-tokens-to-automated-data-collection) - How to Use Reddit API: From Access Tokens to Automated Data Collection
 
 ---
