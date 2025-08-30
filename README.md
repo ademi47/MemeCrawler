@@ -3,13 +3,14 @@
 ## 📑 Table of Contents
 
 - [📖 Project Overview](#-project-overview)
-- [📡 backend API Guide](#-backend-api-guide)
-- [🗄️ Database Structure](#️-database-structure)
-- [🎨 UI Tech Stack & Features](#-ui-tech-stack--features)
-- [🚀 Frontend: AWS Amplify Deployment](#-frontend-production-deployment-with-aws-amplify-nextjs--tailwind)
-- [🖥️ Backend: AWS EC2 Deployment](#️-backend-production-deployment-on-aws-ec2-docker-compose--nginx--tls)
-- [🔄 Continuous Improvements](#-continuous-improvements--maintenance)
+- [📡 Backend API Guide](#-backend-api-guide)
+- [🛠️ MemeCrawler Service](#️-memecrawler-service)
+- [💻 Front End guide](#-front-end-guide)
+- [📔 GEN AI Prompts and Usage](#-gen-ai-prompts-and-usage)
+- [✈️ Production Deployment Guide](#️-Production-Deployment-Guide)
+- [🔍 Live Demo](#-Live-Demo)
 - [💡 Alternative Use Cases](#-alternative-use-cases-for-memecrawler)
+- [🔄 Continuous Improvements](#-continuous-improvements--maintenance)
 
 ## 📖 Project Overview
 
@@ -322,7 +323,7 @@ MemeCrawler/1.0 (by u:Ademi47)
 
 ---
 
-## 🛠️ MemeCrawler Service (Back end)
+## 🛠️ MemeCrawler Service
 
 A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 20 minutes) and performs these steps:
 
@@ -479,7 +480,7 @@ Below are some of the key GEN-AI prompts that I used in this project.
 
 ---
 
-## 🔍 Production Deployment
+## ✈️ Production Deployment Guide
 
 ### 🚀 Frontend: Production Deployment with AWS Amplify (Next.js + Tailwind)
 
