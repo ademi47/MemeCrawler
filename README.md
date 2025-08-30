@@ -250,8 +250,14 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 
 ### Video Guide
 
-Please Click this "Unlisted" Youtube Video to watch the project Demo:
+Please Click below link to watch the project Demo:
+
+```bash
 https://www.youtube.com/watch?v=upHuJ_AFY1s
+
+Note: This video is unlisted hence it's not searchable. Kindly do not share the link.
+The Demo video will be deleted after Monday.
+```
 
 **Note:**
 
