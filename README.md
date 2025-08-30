@@ -256,7 +256,6 @@ Please Click below link to watch the project Demo:
 https://www.youtube.com/watch?v=upHuJ_AFY1s
 
 Note: This video is unlisted hence it's not searchable. Kindly do not share the link.
-The Demo video will be deleted after Monday.
 ```
 
 **Note:**
