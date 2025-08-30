@@ -479,7 +479,7 @@ This section describes how the **UI** is deployed to **AWS Amplify Hosting** usi
 ### ✅ Prerequisites
 
 - GitHub repo with our frontend (Next.js)
-- Environment variable: `NEXT_PUBLIC_API_BASE=https://memecrawler.duckdns.org/.com`
+- Environment variable: `NEXT_PUBLIC_API_BASE=https://memecrawler.duckdns.org`
 - Backend already reachable over HTTPS (for CORS)
 
 ---
@@ -520,13 +520,13 @@ frontend:
 
 **_In Amplify → App settings → Environment variables, I added:_**
 
-- `NEXT_PUBLIC_API_BASE = https://memecrawler.duckdns.org.com`
+- `NEXT_PUBLIC_API_BASE = https://memecrawler.duckdns.org`
 
 - Note: Avoid server-side fetches at build time for external APIs (can cause fetch failed / ENOTFOUND). Use client-side fetch or runtime SSR with try/catch.
 
 #### 4. Custom Domain & HTTPS
 
-- 1. Amplify → Domain management → Add domain (e.g., ui.mydomain.com). --> This is optional. I left this blank as I don't have an extra domain registered.
+- 1. Amplify → Domain management → Add domain. --> This is optional. I left this blank as I don't have an extra domain registered.
 
 - 2. Select branch mapping → Amplify provisions ACM cert + Route 53 records automatically.
 
