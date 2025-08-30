@@ -365,16 +365,15 @@ Below are some of the key GEN-AI prompts that I used in this project.
 
 - “How can I test my local API with a remote n8n instance? Explain tunneling options (ngrok, localtunnel) and how to configure n8n HTTP nodes.”
 
-## 🔍 Live Demo — What You’ll See When “Clicking API”
+## 🔍 Live Demo”
 
 ### Video Guide
 
-Please Click below link to watch the project Demo:
+Please Click below link to watch the project Demo.
+Note: This video is unlisted hence it's not searchable. Kindly do not share the link.
 
 ```bash
 https://www.youtube.com/watch?v=upHuJ_AFY1s
-
-Note: This video is unlisted hence it's not searchable. Kindly do not share the link.
 ```
 
 **Note:**
