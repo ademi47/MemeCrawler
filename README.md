@@ -349,21 +349,21 @@ Below are some of the key GEN-AI prompts that I used in this project.
 
 - “How can I safely store Reddit API credentials (client id, secret, username, password) in environment variables for my .NET backend?”
 
-```bash
+**3. LINQ Queries & Code Optimization**
 
-```
+- "I have a list of memes with fields (Title, Upvotes, CreatedAt). Show me a LINQ query in C# to get the top 20 memes from the last 24 hours ordered by Upvotes.”
 
-```bash
+- “Explain how to optimize EF Core LINQ queries so they don’t fetch unnecessary data. Show examples of Select, AsNoTracking, and filtering before projecting.”
 
-```
+- “What’s the best way to profile slow LINQ queries in .NET and rewrite them for performance?”
 
-```bash
+**4. Why I Picked n8n for Automation**
 
-```
+- “I want to automatically fetch data from my API every hour, generate a PDF, and send it to Telegram. What workflow automation tool should I use? Compare Zapier, Airflow, and n8n.”
 
-```bash
+- “Show me how to build an n8n workflow with Cron → HTTP Request → HTML to PDF → Telegram Bot. Include JSON structure for the workflow.”
 
-```
+- “How can I test my local API with a remote n8n instance? Explain tunneling options (ngrok, localtunnel) and how to configure n8n HTTP nodes.”
 
 ## 🔍 Live Demo — What You’ll See When “Clicking API”
 
