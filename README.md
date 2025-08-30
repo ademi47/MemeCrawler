@@ -370,7 +370,6 @@ Below are some of the key GEN-AI prompts that I used in this project.
 ### Video Guide
 
 Please Click below link to watch the project Demo.
-Note: This video is unlisted hence it's not searchable. Kindly do not share the link.
 
 ```bash
 https://www.youtube.com/watch?v=upHuJ_AFY1s
@@ -379,6 +378,7 @@ https://www.youtube.com/watch?v=upHuJ_AFY1s
 **Note:**
 
 ```bash
+This video is unlisted hence it's not searchable. Kindly do not share the link.
 The project has been successfully deployed to the production environment for functionality testing.
 However, I encountered some CORS issues on the frontend, which are preventing it from running fully at the moment.
 I’m actively working on resolving these and will have the frontend up and running as soon as possible.
