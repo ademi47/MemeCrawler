@@ -333,19 +333,21 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 
 Below are some of the key GEN-AI prompts that I used in this project.
 
-**Frontend with Next.js + Tailwind + Troubleshooting**
+**1. Frontend with Next.js + Tailwind + Troubleshooting**
 
-```bash
-“I’m building a frontend with Next.js and Tailwind CSS. Show me how to structure a Reports page that fetches from my API and displays data in cards. Include a Send Report button that calls a POST endpoint. Make it responsive.”
+- “I’m building a frontend with Next.js and Tailwind CSS. Show me how to structure a Reports page that fetches from my API and displays data in cards. Include a Send Report button that calls a POST endpoint. Make it responsive.”
 
-“I’m getting a CORS error in my Next.js frontend when calling my backend API. Explain why this happens and how to fix it (server-side CORS policy vs client-side fetch).”
+- “I’m getting a CORS error in my Next.js frontend when calling my backend API. Explain why this happens and how to fix it (server-side CORS policy vs client-side fetch).”
 
-“My Tailwind buttons look greyed out. Show me how to style them with hover, active, and focus states so they look clickable.”
-```
+- “My Tailwind buttons look greyed out. Show me how to style them with hover, active, and focus states so they look clickable.”
 
-```bash
+**2. Reddit API & Auth Token Retrieval**
 
-```
+- “Explain step-by-step how to create a Reddit script app, get a client ID and secret, and use them to generate an OAuth2 access token with the password grant type. Show example curl commands.”
+
+- “Why am I getting invalid_grant when requesting a Reddit access token? Walk me through the common causes and fixes.”
+
+- “How can I safely store Reddit API credentials (client id, secret, username, password) in environment variables for my .NET backend?”
 
 ```bash
 
