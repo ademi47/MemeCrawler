@@ -3,8 +3,7 @@
 ## 📑 Table of Contents
 
 - [📖 Project Overview](#-project-overview)
-- [🔑 Reddit API Setup](#-API-Guide-—Top-Voted-Posts-&-Report-Trigger)
-- [📡 API Guide](#-api-guide--top-voted-posts--report-trigger)
+- [📡 backend API Guide](#-backend-api-guide)
 - [🗄️ Database Structure](#️-database-structure)
 - [🎨 UI Tech Stack & Features](#-ui-tech-stack--features)
 - [🚀 Frontend: AWS Amplify Deployment](#-frontend-production-deployment-with-aws-amplify-nextjs--tailwind)
@@ -59,7 +58,7 @@ Key highlights:
 
 ---
 
-## 📡 API Guide — Top Voted Posts & Report Trigger
+## 📡 Backend API Guide
 
 This service exposes a minimal, clear API for:
 
