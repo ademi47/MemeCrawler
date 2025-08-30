@@ -263,7 +263,7 @@ This requires:
 e.g.:
 
 ```bash
-MemeCrawler/1.0 (by u:MyRedditUserName)
+MemeCrawler/1.0 (by u:Ademi47)
 ```
 
 📥 Example JSON Response (trimmed)
