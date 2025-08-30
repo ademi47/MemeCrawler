@@ -250,13 +250,16 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 
 ### Video Guide
 
-Please Click this "Unlisted" Youtube Video to watch the project Demo :
+Please Click this "Unlisted" Youtube Video to watch the project Demo:
 https://www.youtube.com/watch?v=upHuJ_AFY1s
 
-\*Note:
+**Note:**
+
+```bash
 The project has been successfully deployed to the production environment for functionality testing.
 However, I encountered some CORS issues on the frontend, which are preventing it from running fully at the moment.
 I’m actively working on resolving these and will have the frontend up and running as soon as possible.
+```
 
 ### Production Test using API calls via Browser (or Postman)
 
