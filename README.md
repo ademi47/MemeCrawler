@@ -309,6 +309,8 @@ MemeCrawler/1.0 (by u:Ademi47)
 
 - memesnapshots → time-stamped snapshot (who was top at each 10-minute run)
 
+---
+
 ## 🛠️ MemeCrawler Service (Back end)
 
 A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 20 minutes) and performs these steps:
@@ -328,6 +330,8 @@ A lightweight background job _MemeCrawlWorker_ runs on a schedule (e.g., every 2
 - New post → insert.
 
 - Existing post → upsert only fields that can change (e.g., upvotes, thumbnail, removed flag).
+
+---
 
 ## 📔 GEN AI Prompts and Usage
 
@@ -364,6 +368,8 @@ Below are some of the key GEN-AI prompts that I used in this project.
 - “Show me how to build an n8n workflow with Cron → HTTP Request → HTML to PDF → Telegram Bot. Include JSON structure for the workflow.”
 
 - “How can I test my local API with a remote n8n instance? Explain tunneling options (ngrok, localtunnel) and how to configure n8n HTTP nodes.”
+
+---
 
 ## 🔍 Live Demo”
 
