@@ -780,6 +780,9 @@ _UI reports route:_
 _n8n dashboard:_
 ![plot](/Screenshots/n8%20flow.jpg)
 
+_ER Diagram:_
+![plot](/Screenshots/DB/ER%20Diagram.jpg)
+
 ---
 
 ## 💡 Alternative Use Cases for MemeCrawler
