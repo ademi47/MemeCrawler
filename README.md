@@ -468,7 +468,7 @@ Below are some of the key GEN-AI prompts that I used in this project.
 
 ---
 
-## 🔍 Live Demo”
+## 🔍 Live Demo
 
 ### Video Guide
 
@@ -543,6 +543,9 @@ _UI memes route:_
 
 _UI reports route:_
 ![plot](/Screenshots/Front%20End/reports_route.jpg)
+
+_n8n dashboard:_
+![plot](/Screenshots/n8%20flow.jpg)
 
 ---
 
