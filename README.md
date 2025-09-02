@@ -811,6 +811,12 @@ _n8n HTTP Request:_
 _ER Diagram:_
 ![plot](/Screenshots/DB/ER%20Diagram.jpg)
 
+_Telegram Report_
+![plot](/Screenshots/reports/report_new1.jpg)
+![plot](/Screenshots/reports/report_new2.jpg)
+![plot](/Screenshots/reports/report_new3.jpg)
+![plot](/Screenshots/reports/report_new4.jpg)
+
 ---
 
 ## 💡 Alternative Use Cases for MemeCrawler
